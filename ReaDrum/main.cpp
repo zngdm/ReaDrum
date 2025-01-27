@@ -1,67 +1,62 @@
     #include <SFML/Graphics.hpp>
-    #include <iostream>
     #include <SFML/Audio.hpp>
     #include <chrono>
-    
+    #include <vector>    
+    #include <fstream>
+    #include "FindWavFile.h"
+    #include <filesystem>
 
 
     int main()
 {
+/// vector For SoundBuffer's
 
 
+    std::filesystem::path  p("C:\\Program Files\\ReaDrum\\Sounds");
+
+    std::vector<std::string> WVL = FindWavFile(p);
+    
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+    
     /// For windows
     sf::RenderWindow window(sf::VideoMode(800, 600), "ReaDeum", sf::Style::None);
-    sf::SoundBuffer buffer1;
-    sf::SoundBuffer buffer2;
-    sf::SoundBuffer buffer3;
-    /// For Sound's
-        /// K
-    if (!buffer1.loadFromFile("k.ogg"))
-    {
-        return 1;
-    }
-    sf::Sound soundK;
-    soundK.setBuffer(buffer1);
-        /// S
-    if (!buffer2.loadFromFile("s.ogg"))
-    {
-        return 1;
-    }
-    sf::Sound soundS;
-    soundS.setBuffer(buffer2);
-        /// H
-    if (!buffer3.loadFromFile("h.ogg"))
-    {
-        return 1;
-    }
-    sf::Sound soundH;
-    soundH.setBuffer(buffer3);
+    
+
+  
+/// sf::Music Sou2 ("C:\\Program Files\\ReaDrum\\Sounds\\h.ogg");
+
     
     /// For Mouse
     sf::Vector2i mouseStartPosition;
 
     /// For Opening Image
     sf::Image Opimage;
-    if (!Opimage.loadFromFile("ReaDrum.png")) {
+    if (!Opimage.loadFromFile("C:\\Program Files\\ReaDrum\\ReaDrum.png")) 
+    {
         return 1;
     }
 
     sf::Texture Optexture;
-    if (!Optexture.loadFromImage(Opimage)) {
+    if (!Optexture.loadFromImage(Opimage)) 
+    {
         return 1;
     }
     sf::Sprite Opsprite;
     Opsprite.setTexture(Optexture);
     Opsprite.setPosition(0, 0);
 
-    ///
+    /// LOADING soundFile'S From C | ProgramFile | ReaDrum | Sounds ;
+    
+    
+    
+    
     while (window.isOpen())
     {
         sf::Event event;
         
         while (window.pollEvent(event))
         {
+    
             if (event.type == sf::Event::Closed)
                 window.close();
             
@@ -72,26 +67,26 @@
  ///        KEYBOARD EVENT's           
             else if (event.type == sf::Event::KeyPressed) 
             {
-                if (event.key.code == sf::Keyboard::K) 
+                if (event.key.code == sf::Keyboard::Num0 || event.key.code == sf::Keyboard::Numpad0)
                 {
                     ///std::cout << "K" << std::endl;
-                    soundK.play();
+                    
+///                 sou0.play();
                 }
-                else if (event.key.code == sf::Keyboard::S)
+                else if (event.key.code == sf::Keyboard::Num1 || event.key.code == sf::Keyboard::Numpad1)
                 {
                     ///std::cout << "S" << std::endl;
-                    soundS  .play();
+///                 Sou1.play();
                 }
-                else if (event.key.code == sf::Keyboard::H)
+                else if (event.key.code == sf::Keyboard::Num2 || event.key.code == sf::Keyboard::Numpad2)
                 {
                     ///std::cout << "H" << std::endl;
-                    soundH.play();
-                }
+///                 Sou2.play();
+               }
             }
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
         {
-            // Calculate the window's new position based on mouse movement
             sf::Vector2i currentMousePosition = sf::Mouse::getPosition(window);
             window.setPosition(window.getPosition() + (currentMousePosition - mouseStartPosition));
         }
