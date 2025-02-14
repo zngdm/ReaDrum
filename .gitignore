@@ -1,0 +1,54 @@
+# Ignore build artifacts
+x64/
+Debug/
+Release/
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+
+# Ignore SFML specific build files
+sfml-build/
+
+# Other common build outputs
+*.o
+*.obj
+*.a
+
+# CMake specific
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Visual Studio specific
+.vs/
+*.vcxproj.user
+*.sln.DotSettings.user
+
+# CLion specific
+.idea/
+
+# Vscode
+.vscode/
+
+# Generated files by IDEs or build systems
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Temporary files
+*.bak
+*.tmp
+*~
+
+# Ignore SFML example projects if included in your repo
+SFML-*/examples/
+SFML-*/doc/
+SFML-*/tests/
